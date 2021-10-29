@@ -1,0 +1,26 @@
+<script type="text/javascript">
+  RED.nodes.registerType("soap-response", {
+    category: "network",
+    color: "#cc66ff",
+    defaults: {
+      name: { value: "" },
+    },
+    inputs: 1,
+    outputs: 0,
+    icon: "white-globe.png",
+    label: function () {
+      return this.name || "soap-response";
+    },
+  });
+</script>
+
+<script type="text/html" data-template-name="soap-response">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> name</label>
+    <input type="text" id="node-input-name" placeholder="name">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="soap-response">
+  <p>在 msg.payload 中定义参数，并在 msg.payload 中查看响应结果</p>
+</script>

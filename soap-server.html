@@ -1,0 +1,56 @@
+<script type="text/javascript">
+  RED.nodes.registerType("soap-server", {
+    category: "network",
+    color: "#cc66ff",
+    defaults: {
+      name: { value: "" },
+      port: { value: "", required: true, validate: RED.validators.number() },
+      ip: { value: "", required: true },
+      pathname: { value: "", required: true },
+      servername: { value: "", required: true },
+      portname: { value: "", required: true },
+      funcnames: { value: "", required: true },
+    },
+    inputs: 0,
+    outputs: 1,
+    icon: "white-globe.png",
+    label: function () {
+      return this.name || "soap-server";
+    },
+  });
+</script>
+
+<script type="text/html" data-template-name="soap-server">
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> name</label>
+    <input type="text" id="node-input-name" placeholder="name">
+  </div>
+  <div class="form-row">
+      <label for="node-input-port"><i class="icon-tag"></i> port</label>
+      <input type="text" id="node-input-port" placeholder="listen port">
+  </div>
+  <div class="form-row">
+      <label for="node-input-ip"><i class="icon-tag"></i> ip</label>
+      <input type="text" id="node-input-ip" placeholder="ip">
+  </div>
+  <div class="form-row">
+      <label for="node-input-pathname"><i class="icon-tag"></i> pathname</label>
+      <input type="text" id="node-input-pathname" placeholder="like /test/path">
+  </div>
+  <div class="form-row">
+      <label for="node-input-servername"><i class="icon-tag"></i> servername</label>
+      <input type="text" id="node-input-servername" placeholder="webservices servername">
+  </div>
+  <div class="form-row">
+      <label for="node-input-portname"><i class="icon-tag"></i> portname</label>
+      <input type="text" id="node-input-portname" placeholder="webservices bind portname">
+  </div>
+  <div class="form-row">
+      <label for="node-input-funcnames"><i class="icon-tag"></i> funcnames</label>
+      <input type="text" id="node-input-funcnames" placeholder="function name list">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="soap-server">
+  <p>在 msg.payload 中定义参数，并在 msg.payload 中查看响应结果</p>
+</script>

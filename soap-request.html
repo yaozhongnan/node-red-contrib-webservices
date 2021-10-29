@@ -1,0 +1,36 @@
+<script type="text/javascript">
+  RED.nodes.registerType("soap-request", {
+    category: "network",
+    color: "#cc66ff",
+    defaults: {
+      name: { value: "" },
+      url: { value: "", required: true },
+      method: { value: "", required: true },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "white-globe.png",
+    label: function() {
+      return this.name || "soap-request";
+    },
+  });
+</script>
+
+<script type="text/html" data-template-name="soap-request">
+  <div class="form-row">
+      <label for="node-input-url"><i class="icon-tag"></i> url</label>
+      <input type="text" id="node-input-url" placeholder="url">
+  </div>
+  <div class="form-row">
+      <label for="node-input-method"><i class="icon-tag"></i> method</label>
+      <input type="text" id="node-input-method" placeholder="method">
+  </div>
+  <div class="form-row">
+    <label for="node-input-name"><i class="icon-tag"></i> name</label>
+    <input type="text" id="node-input-name" placeholder="name">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="soap-request">
+  <p>在 msg.payload 中定义参数，并在 msg.payload 中查看响应结果</p>
+</script>
