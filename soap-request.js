@@ -5,17 +5,23 @@ module.exports = function (RED) {
   function SOAPRuquest(n) {
     RED.nodes.createNode(this, n);
     const node = this;
-    const { url, method } = n;
-
-    if (!(url.startsWith("http") && url.endsWith("?wsdl"))) {
-      node.status({ fill: "red", shape: "dot", text: "URL Config Error: " + url });
-      node.error("URL Config Error: " + url);
-      return;
-    }
+    const { method } = n;
 
     try {
       node.on("input", function (msg, nodeSend, nodeDone) {
-        soap.createClient(url, function (err, client) {
+        if (!msg.soapURL) {
+          node.status({ fill: "red", shape: "dot", text: "No SOAP URL: " + err });
+          node.error("No SOAP URL: " + err);
+          return;
+        }
+
+        if (!(msg.soapURL.startsWith("http") && msg.soapURL.endsWith("?wsdl"))) {
+          node.status({ fill: "red", shape: "dot", text: "URL Config Error: " + msg.soapURL });
+          node.error("URL Config Error: " + msg.soapURL);
+          return;
+        }
+
+        soap.createClient(msg.soapURL, function (err, client) {
           if (err) {
             node.status({ fill: "red", shape: "dot", text: "WSDL Config Error: " + err });
             node.error("WSDL Config Error: " + err);

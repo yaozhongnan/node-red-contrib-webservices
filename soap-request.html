@@ -4,7 +4,7 @@
     color: "#cc66ff",
     defaults: {
       name: { value: "" },
-      url: { value: "", required: true },
+      // url: { value: "", required: true },
       method: { value: "", required: true },
     },
     inputs: 1,
@@ -17,10 +17,10 @@
 </script>
 
 <script type="text/html" data-template-name="soap-request">
-  <div class="form-row">
+  <!-- <div class="form-row">
       <label for="node-input-url"><i class="icon-tag"></i> url</label>
       <input type="text" id="node-input-url" placeholder="url">
-  </div>
+  </div> -->
   <div class="form-row">
       <label for="node-input-method"><i class="icon-tag"></i> method</label>
       <input type="text" id="node-input-method" placeholder="method">
@@ -32,5 +32,5 @@
 </script>
 
 <script type="text/html" data-help-name="soap-request">
-  <p>在 msg.payload 中定义参数，并在 msg.payload 中查看响应结果</p>
+  <p>通过 msg.soapURL 指定请求 URL </p>
 </script>
