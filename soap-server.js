@@ -8,7 +8,7 @@ module.exports = function (RED) {
   function SOAPServer(n) {
     RED.nodes.createNode(this, n);
     const node = this;
-    const { port, ip, pathname, servername, portname, funcnames } = n;
+    const { port, ip, pathname, servername, portname, funcnames, wsdlFilePath } = n;
 
     const InitServiceImplPort = {};
 
@@ -38,18 +38,19 @@ module.exports = function (RED) {
         },
       };
 
-      const xmlpath = path.resolve(__dirname, `./node_red_xml_weservices.wsdl`);
+      const xmlpath = wsdlFilePath ? wsdlFilePath : path.resolve(__dirname, `./node_red_xml_weservices.wsdl`);
 
-      wsdlMake({
-        func: funcnamesList,
-        servicesName: servername,
-        portName: portname,
-        url: pathname,
-        port: port,
-        ip: ip,
-        path: xmlpath
-      })
-
+      if (!wsdlFilePath) {
+        wsdlMake({
+          func: funcnamesList,
+          servicesName: servername,
+          portName: portname,
+          url: pathname,
+          port: port,
+          ip: ip,
+          path: xmlpath
+        })
+      }
 
       const xmlString = fs.readFileSync(xmlpath, "utf8");
 

@@ -10,6 +10,7 @@
       servername: { value: "", required: true },
       portname: { value: "", required: true },
       funcnames: { value: "", required: true },
+      wsdlFilePath: { value: "", required: false }
     },
     inputs: 0,
     outputs: 1,
@@ -48,6 +49,10 @@
   <div class="form-row">
       <label for="node-input-funcnames"><i class="icon-tag"></i> funcnames</label>
       <input type="text" id="node-input-funcnames" placeholder="function name list">
+  </div>
+  <div class="form-row">
+      <label for="node-input-wsdlFilePath"><i class="icon-tag"></i> wsdlFilePath</label>
+      <input type="text" id="node-input-wsdlFilePath" placeholder="absolute wsdl file path, optional">
   </div>
 </script>
 
