@@ -21,10 +21,15 @@ module.exports = function (RED) {
           return;
         }
 
-        soap.createClient(msg.soapURL, function (err, client) {
+        const options = msg.soapOptions || {};
+
+        node.status({ options: options });
+
+        soap.createClient(msg.soapURL, options, function (err, client) {
           if (err) {
             node.status({ fill: "red", shape: "dot", text: "WSDL Config Error: " + err });
             node.error("WSDL Config Error: " + err);
+            
             return;
           }
 
